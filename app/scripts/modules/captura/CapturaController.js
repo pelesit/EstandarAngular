@@ -1,6 +1,3 @@
-
-//CapturaController.$inject = ['servicioCompartido','$location'];
-
 function CapturaController(servicioCompartido,$location) {
 
 	var vm = this;

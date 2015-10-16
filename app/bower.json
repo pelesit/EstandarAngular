@@ -1,21 +1,6 @@
 {
-  "name": "pruebaconcepto",
+  "name": "EstandarAngular",
   "version": "0.0.1",
-  "authors": [
-    "Juan Jose Valencia Ceballos <juan.valencia@ceiba.com.co>"
-  ],
-  "description": "",
-  "main": "index.html",
-  "moduleType": [],
-  "license": "MIT",
-  "homepage": "index.html",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
     "angular": "1.4.x",
     "angular-route": "1.4.x"

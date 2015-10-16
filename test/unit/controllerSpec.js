@@ -1,17 +1,10 @@
-'use strict';
-
-describe('Prueba modulo main', function() {
-  // Change is here. Notice how the dependencies of the influences.controllers
-  // module are specified separately in another beforeEach directive
+//Nota: Se debe separar por modulos
+describe('Pruebas', function() {
   beforeEach(module('GestionDocumental'));
-  /*beforeEach(function() {
-    module('ui.bootstrap');
-    module('influences.services');
-  });*/
 
   describe('MainController', function(){
 
-    var  ctrl, service,location;
+    var ctrl, service,location;
 
     beforeEach(inject(function( $controller, servicioCompartido,_$location_) {
       location = _$location_;
@@ -19,19 +12,15 @@ describe('Prueba modulo main', function() {
       ctrl = $controller('MainController', { servicioCompartido: service, $location : location});
     }));
 
-
-
     it('dos mas dos igual a 4', function () {
       	var resultado = ctrl.sumar(2,2);
        expect(resultado).toBe(4);
      });
 
-    it('dos mas dos igual a 5', function () {
-    	//Se valida tamaño enviado en bytes
+    it('tres mas dos igual a 5', function () {
          var resultado = ctrl.sumar(3,2);
          expect(resultado).toBe(5);
      });
-
   });
 
   describe('CapturaController', function(){
@@ -43,8 +32,6 @@ describe('Prueba modulo main', function() {
       service = servicioCompartido;
       ctrl = $controller('CapturaController', { servicioCompartido: service, $location : location});
     }));
-
-
 
     it('Anexar registro', function () {
 
@@ -74,7 +61,4 @@ describe('Prueba modulo main', function() {
     });
 
   });
-
-
-
 });

@@ -3,11 +3,11 @@ angular.module('GestionDocumental',['ngRoute'])
 	$routeProvider.
 	when('/home', {
 		templateUrl: 'scripts/modules/main/main-template.html',
-		controller: 'MainController',
+		controller: 'mainController',
 		controllerAs: 'main'
 	}).when('/captura', {
 			templateUrl: 'scripts/modules/captura/captura-template.html',
-			controller: 'CapturaController',
+			controller: 'capturaController',
 			controllerAs: 'captura'
 		}).otherwise({
 		redirectTo: '/home'

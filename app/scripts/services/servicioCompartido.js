@@ -1,11 +1,14 @@
-function servicioCompartido (){
+(function () {
+  'use strict';
+  function servicioCompartido (){
 
-  var vm = this;
+    var vm = this;
 
-  vm.filas = [];
+    vm.filas = [];
 
-  return vm;
-}
+    return vm;
+  }
 
-angular.module('GestionDocumental')
-.factory ('servicioCompartido', servicioCompartido);
+  angular.module('GestionDocumental')
+  .factory ('servicioCompartido', servicioCompartido);
+})();

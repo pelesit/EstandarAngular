@@ -11,6 +11,7 @@ unused: Valida que las variables declaradas si sean usadas
 */
 
 {
+   "node": true,
     "curly": true,
     "eqeqeq": true,
     "latedef": true,

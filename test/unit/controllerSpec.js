@@ -2,14 +2,14 @@
 describe('Pruebas', function() {
   beforeEach(module('GestionDocumental'));
 
-  describe('MainController', function(){
+  describe('mainController', function(){
 
     var ctrl, service,location;
 
     beforeEach(inject(function( $controller, servicioCompartido,_$location_) {
       location = _$location_;
       service = servicioCompartido;
-      ctrl = $controller('MainController', { servicioCompartido: service, $location : location});
+      ctrl = $controller('mainController', { servicioCompartido: service, $location : location});
     }));
 
     it('dos mas dos igual a 4', function () {
@@ -23,14 +23,14 @@ describe('Pruebas', function() {
      });
   });
 
-  describe('CapturaController', function(){
+  describe('capturaController', function(){
 
     var  ctrl, service,location;
 
     beforeEach(inject(function( $controller, servicioCompartido,_$location_) {
       location = _$location_;
       service = servicioCompartido;
-      ctrl = $controller('CapturaController', { servicioCompartido: service, $location : location});
+      ctrl = $controller('capturaController', { servicioCompartido: service, $location : location});
     }));
 
     it('Anexar registro', function () {

@@ -12,5 +12,4 @@ angular.module('GestionDocumental',['ngRoute'])
 		}).otherwise({
 		redirectTo: '/home'
 	});
-
 });

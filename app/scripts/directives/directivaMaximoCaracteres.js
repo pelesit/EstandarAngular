@@ -1,4 +1,3 @@
-
 function maximoCaracteres() {
   return {
     require: 'ngModel',
@@ -17,7 +16,6 @@ function maximoCaracteres() {
     }
   };
 }
-
 
 angular.module('GestionDocumental')
 .directive('maximoCaracteres', maximoCaracteres);

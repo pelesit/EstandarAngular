@@ -1,11 +1,10 @@
-
 function servicioCompartido (){
 
-  var servicioCompartido = this;
+  var vm = this;
 
-  servicioCompartido.filas = [];
+  vm.filas = [];
 
-  return servicioCompartido;
+  return vm;
 }
 
 angular.module('GestionDocumental')

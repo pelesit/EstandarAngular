@@ -1,58 +1,45 @@
 module.exports = function(config){
   config.set({
-    //  root path location that will be used to resolve all relative paths in files and exclude sections
+
     basePath : '../',
 
-    // files to include, ordered by dependencies
     files : [
-      // include relevant Angular files and libs
+
+      //Dependencias de angular
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-route/angular-route.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
 
-      // include JS files
+      //Dependencias propias de desarrollo
       'app/scripts/**/*.js',
       'app/scripts/modules/**/*.js',
-      'app/scripts/modules/main/*.js',
       'app/scripts/app.js',
 
-      // include html template files
-      // 'app/partials/directives/*.html',
-      // 'app/partials/*.html',
-
-      // include unit test specs
+      //Dependencias de pruebas unitarias
       'test/unit/*.js'
     ],
-    // files to exclude
-    exclude : [
-       'app/bower_components/angular/*.min.js'
-    ],
 
-    // karma has its own autoWatch feature but Grunt watch can also do this
+    //karma tiene su propia característica AutoWatch pero grunt también puede hacer esto
     autoWatch : false,
 
-    // testing framework, be sure to install the correct karma plugin
+    //Framework de pruebas
     frameworks: ['jasmine'],
 
-    // browsers to test against, be sure to install the correct browser launcher plugins
+    //Navegadores por defecto para probar no visuales
     browsers : ['PhantomJS'],
 
-    // map of preprocessors that is used mostly for plugins
     preprocessors: {
-      // 'app/partials/directives/*.html': 'html2js',
-      // 'app/partials/*.html': 'html2js'
 
-      // test coverage
-      'app/scripts/modules/**/*.js': ['jshint', 'coverage'],
+      //Cobertura de pruebas y jshint
       'app/scripts/directives/*.js': ['jshint', 'coverage'],
-      'app/scripts/services/*.js': ['jshint', 'coverage'],
       'app/scripts/filters/*.js': ['jshint', 'coverage'],
+      'app/scripts/modules/**/*.js': ['jshint', 'coverage'],
+      'app/scripts/services/*.js': ['jshint', 'coverage'],
       'app/scripts/app.js': ['jshint', 'coverage']
     },
 
     reporters: ['progress', 'coverage'],
 
-    // list of karma plugins
     plugins : [
       'karma-jshint-preprocessor',
       'karma-coverage',
@@ -63,19 +50,16 @@ module.exports = function(config){
       'karma-phantomjs-launcher'
     ],
 
-    // plugin settings
+    //Configuración de plugin
     ngHtml2JsPreprocessor: {
       stripPrefix: 'app/'
     },
     coverageReporter: {
-      // type of file to output, use text to output to console
-      type : 'text',
-      // directory where coverage results are saved
+      //Posibles tipos de archivo: html,lcov,lcovonly,text,text-summary,
+      //cobertura (xml soportado por jenkins)
+      //Nota: Si el tipo del archivo es text or text-summary se debe setiar la propiedad file
+      type : 'cobertura',
       dir: 'test-results/coverage/'
-      // if type is text or text-summary, you can set the file name
       // file: 'coverage.txt'
-    },
-    junitReporter: {
-      outputFile: 'test-results/junit-results.xml'
     }
 })}

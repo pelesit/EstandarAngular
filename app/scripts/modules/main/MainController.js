@@ -1,5 +1,3 @@
-
-
 function MainController($location,servicioCompartido) {
 
 	var vm = this;
@@ -13,7 +11,7 @@ function MainController($location,servicioCompartido) {
 
 	vm.sumar = function(a,b){
 		return a+b;
-	}
+	};
 
 	vm.cambiar=function(){
 			vm.filas = servicioCompartido.filas;
@@ -24,7 +22,6 @@ function MainController($location,servicioCompartido) {
 	};
 
 }
-
 
 angular.module('GestionDocumental')
 .controller('MainController',MainController);

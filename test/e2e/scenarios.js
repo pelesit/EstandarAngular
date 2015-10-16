@@ -11,9 +11,5 @@ describe('Protractor Demo App', function() {
       filas = rows.length;
       expect(filas).toEqual(2);
     });
-
-
   });
-
-
 });

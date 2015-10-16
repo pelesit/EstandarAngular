@@ -1,4 +1,4 @@
-angular.module('GestionDocumental',['ngRoute'])
+angular.module('GestionDocumental',['ngRoute','ngResource'])
 .config(function($routeProvider){
 	$routeProvider.
 	when('/home', {
@@ -9,7 +9,11 @@ angular.module('GestionDocumental',['ngRoute'])
 			templateUrl: 'scripts/modules/captura/captura-template.html',
 			controller: 'capturaController',
 			controllerAs: 'captura'
-		}).otherwise({
+		}).when('/externo', {
+				templateUrl: 'scripts/modules/externo/externo-template.html',
+				controller: 'externoController',
+				controllerAs: 'externo'
+			}).otherwise({
 		redirectTo: '/home'
 	});
 });

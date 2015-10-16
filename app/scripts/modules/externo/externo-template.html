@@ -1,0 +1,23 @@
+</br>
+
+<span>posts externos</span>
+
+<button ng-click="externo.cargar()">Cargar datos</button>
+
+<table>
+	<tr>
+		<th>Titulo</th>
+		<th>Body</th>
+	</tr>
+	<tr ng-repeat="fila in externo.posts">
+
+		<td>{{fila.title}}</td>
+		<td>{{fila.body}}</td>
+
+	</tr>
+
+</table>
+
+<!--<button ng-click="main.cambiar()">Cambiar los valores</button>-->
+
+<button ng-click="externo.ira()">Ir al maestro</button>

@@ -22,6 +22,10 @@
 		vm.ira = function(){
 			$location.path('/captura');
 		};
+		vm.iraext = function(){
+			$location.path('/externo');
+		};
+
 
 	}
 

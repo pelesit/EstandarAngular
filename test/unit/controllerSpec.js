@@ -25,12 +25,13 @@ describe('Pruebas', function() {
 
   describe('capturaController', function(){
 
-    var  ctrl, service,location,q,scope;
+    var  ctrl, service,location,q,time;
 
-    beforeEach(inject(function( $controller, servicioCompartido,_$location_, _$q_) {
+    beforeEach(inject(function( $controller, servicioCompartido,_$location_, _$q_, _$timeout_) {
       location = _$location_;
       service = servicioCompartido;
       q = _$q_;
+      time = _$timeout_;
       ctrl = $controller('capturaController', { servicioCompartido: service, $location : location});
     }));
 
@@ -39,7 +40,7 @@ describe('Pruebas', function() {
         var cuantosInicial=0;
         var cuantosFinal=0;
         ctrl.obtenerFilas();
-
+        time.flush();
 
         cuantosInicial = ctrl.filas.length;
 
@@ -48,7 +49,7 @@ describe('Pruebas', function() {
         ctrl.actualizar(ctrl.item);
 
         ctrl.obtenerFilas();
-
+        time.flush();
         cuantosFinal = ctrl.filas.length;
 
         expect(cuantosFinal).toBe(cuantosInicial + 1);
@@ -62,9 +63,10 @@ describe('Pruebas', function() {
       ctrl.item.id = 4;
       ctrl.item.nombre  = "cuatro";
       ctrl.actualizar(ctrl.item);
-
+      time.flush();
+      
       ctrl.obtenerFilas();
-
+      time.flush();
 
 
       //actualiza el registro
@@ -73,6 +75,7 @@ describe('Pruebas', function() {
       ctrl.item = ctrl.filas[0];
       ctrl.item.nombre = ctrl.item.nombre + " mas dos";
       ctrl.actualizar(ctrl.item);
+      time.flush();
 
       expect(ctrl.filas[0].nombre).toBe(nombre + " mas dos");
       /**/

@@ -9,7 +9,7 @@ describe('Protractor Demo App', function() {
     var filas = 0;
     element.all(by.repeater('fila in main.filas')).then(function(rows) {
       filas = rows.length;
-      expect(filas).toEqual(2);
+      expect(filas).toEqual(0);
     });
   });
 });

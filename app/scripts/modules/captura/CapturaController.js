@@ -4,25 +4,57 @@
 
 		var vm = this;
 		vm.item = {};
-	  vm.filas = servicioCompartido.filas;
+    function cargarInicial(){
+        var promesa =servicioCompartido.recuperarFilas();
+        promesa.then(function(success){
+          vm.filas  =success;
+        }, function(error){
+          vm.filas = [];
+        });
+    }
 
-	  vm.actualizar = function(item){
-	    servicioCompartido.filas.push(item);
-	    vm.filas = servicioCompartido.filas ;
-	    vm.item = {};
+
+
+
+    function cambiarFilas(fila){
+      var promesa =servicioCompartido.actualizarFila(fila);
+      promesa.then(function(success){
+        vm.filas  =success;
+        vm.item={};
+      }, function(error){
+          console.log(error);
+      });
+    }
+
+
+    vm.obtenerFilas = cargarInicial;
+    
+	  vm.actualizar = function(fila){
+      var promesa =servicioCompartido.recuperarFila(fila.id);
+      promesa.then(function(success){
+        var promesaeliminar =servicioCompartido.eliminarFila(fila.id);
+        promesaeliminar.then(function(success){
+          cambiarFilas(fila);
+        }, function(error){
+            console.log(error);
+        });
+      }, function(error){
+        cambiarFilas(fila);
+      });
 	  };
 
-	  vm.cargar = function(item2){
-
-	    var index = vm.filas.indexOf(item2);
-	    vm.filas.splice(index, 1);
-	    servicioCompartido.filas = vm.filas;
-	    vm.item=item2;
-
+	  vm.cargar = function(fila){
+      var promesa =servicioCompartido.recuperarFila(fila.id);
+      promesa.then(function(success){
+        vm.item  =success;
+      }, function(error){
+        vm.item = [];
+      });
 	  };
 	  vm.ira = function(){
 			$location.path('/home');
 		};
+    cargarInicial();
 	}
 
 	angular.module('GestionDocumental')

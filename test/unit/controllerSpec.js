@@ -25,39 +25,57 @@ describe('Pruebas', function() {
 
   describe('capturaController', function(){
 
-    var  ctrl, service,location;
+    var  ctrl, service,location,q,scope;
 
-    beforeEach(inject(function( $controller, servicioCompartido,_$location_) {
+    beforeEach(inject(function( $controller, servicioCompartido,_$location_, _$q_) {
       location = _$location_;
       service = servicioCompartido;
+      q = _$q_;
       ctrl = $controller('capturaController', { servicioCompartido: service, $location : location});
     }));
 
     it('Anexar registro', function () {
 
-        var cuantos = service.filas.length;
+        var cuantosInicial=0;
+        var cuantosFinal=0;
+        ctrl.obtenerFilas();
+
+
+        cuantosInicial = ctrl.filas.length;
+
         ctrl.item.id = 4;
         ctrl.item.nombre  = "cuatro";
         ctrl.actualizar(ctrl.item);
 
-        expect(service.filas.length).toBe(cuantos + 1);
+        ctrl.obtenerFilas();
+
+        cuantosFinal = ctrl.filas.length;
+
+        expect(cuantosFinal).toBe(cuantosInicial + 1);
+
      });
 
     it('Actualizar nombre', function () {
 
+
       //crea el registro
-      var cuantos = service.filas.length;
       ctrl.item.id = 4;
       ctrl.item.nombre  = "cuatro";
       ctrl.actualizar(ctrl.item);
 
+      ctrl.obtenerFilas();
+
+
+
       //actualiza el registro
-      var nombre =service.filas[0].nombre;
-      ctrl.item = service.filas[0];
+
+      var nombre = ctrl.filas[0].nombre;
+      ctrl.item = ctrl.filas[0];
       ctrl.item.nombre = ctrl.item.nombre + " mas dos";
       ctrl.actualizar(ctrl.item);
 
-      expect(service.filas[0].nombre).toBe(nombre + " mas dos");
+      expect(ctrl.filas[0].nombre).toBe(nombre + " mas dos");
+      /**/
     });
 
   });

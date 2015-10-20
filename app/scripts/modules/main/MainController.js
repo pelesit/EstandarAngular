@@ -4,19 +4,21 @@
 
 		var vm = this;
 
-		if (servicioCompartido.filas.length ===0){
-			vm.filas = [{id:1,nombre:"uno"},{id:2,nombre:"dos"}];
-			servicioCompartido.filas  =vm.filas;
-		}else{
-			vm.filas = servicioCompartido.filas  ;
-		}
+    function cargarInicial(){
+        var promise =servicioCompartido.recuperarFilas();
+        promise.then(function(success){
+          vm.filas  =success;
+        }, function(error){
+          vm.filas = [];
+        });
+    }
 
 		vm.sumar = function(a,b){
 			return a+b;
 		};
 
 		vm.cambiar=function(){
-				vm.filas = servicioCompartido.filas;
+				cargarInicial();
 		};
 
 		vm.ira = function(){
@@ -25,7 +27,7 @@
 		vm.iraext = function(){
 			$location.path('/externo');
 		};
-
+    cargarInicial();
 
 	}
 

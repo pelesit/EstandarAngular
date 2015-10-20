@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "dependencies": {
     "angular": "1.4.x",
-    "angular-route": "1.4.x"
+    "angular-route": "1.4.x",
+    "angular-resource": "1.4.x"
   },
   "devDependencies": {
-    "angular-mocks": "1.4.x",
-    "angular-resource": "1.4.x"
+    "angular-mocks": "1.4.x"
   }
 }
